@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+      target: development
+    command: npm run start:dev
+    env_file:
+      - ./api/.env
+    ports:
+      - $PORT:$PORT_DEV
+    volumes:
+      - ./api/:/usr/src/app
